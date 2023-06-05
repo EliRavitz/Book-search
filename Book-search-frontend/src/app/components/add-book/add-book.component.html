@@ -1,0 +1,79 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Title</label><br />
+    <input
+      type="text"
+      name="title"
+      formControlName="title"
+      id="title"
+      placeholder="Add Title"
+    />
+    <div
+      *ngIf="bookForm.get('title')?.invalid && bookForm.get('title')?.touched"
+    >
+      <div *ngIf="bookForm.get('title')?.hasError('required')">
+        Title is required
+      </div>
+    </div>
+  </div>
+  <div>
+    <label for="description">Description</label><br />
+    <input
+      type="text"
+      name="description"
+      formControlName="description"
+      id="description"
+      placeholder="Add Description"
+    />
+    <div
+      *ngIf="
+        bookForm.get('description')?.invalid &&
+        bookForm.get('description')?.touched
+      "
+    >
+      <div *ngIf="bookForm.get('description')?.hasError('required')">
+        Description is required
+      </div>
+    </div>
+  </div>
+  <div>
+    <label for="author_name">Author Name</label><br />
+    <input
+      type="text"
+      name="author_name"
+      formControlName="author_name"
+      id="author_name"
+      placeholder="Add Author Name"
+    />
+    <div
+      *ngIf="
+        bookForm.get('author_name')?.invalid &&
+        bookForm.get('author_name')?.touched
+      "
+    >
+      <div *ngIf="bookForm.get('author_name')?.hasError('required')">
+        Author Name is required
+      </div>
+    </div>
+  </div>
+  <div>
+    <label for="published_date">Published Date</label><br />
+    <input
+      type="date"
+      name="published_date"
+      formControlName="published_date"
+      id="published_date"
+    />
+    <div
+      *ngIf="
+        bookForm.get('published_date')?.invalid &&
+        bookForm.get('published_date')?.touched
+      "
+    >
+      <div *ngIf="bookForm.get('published_date')?.hasError('required')">
+        Published Date is required
+      </div>
+    </div>
+  </div>
+  <input type="submit" value="Save" />
+</form>
