@@ -1,0 +1,79 @@
+.main_item {
+  margin: 1rem auto;
+  width: 50rem;
+  padding: 1rem 2rem;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: height 2s ease-in;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.expanded {
+  min-height: 8rem;
+}
+
+.description_expanded {
+  visibility: hidden;
+}
+
+.edit_expanded {
+  visibility: hidden;
+}
+
+.first_part {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.first_part_p {
+  width: 10rem;
+}
+
+.buttons button,
+.buttons fa-icon {
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+.buttons button {
+  padding: 0%;
+  margin: 0%;
+  background: none;
+  border: none;
+}
+
+.second_part {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.description {
+  margin: auto;
+}
+
+.form {
+  display: flex;
+  align-items: start;
+  height: 4rem;
+}
+
+.form > div {
+  margin: 0 0.5rem;
+}
+
+.form input {
+  width: 10rem;
+}
+
+.form > input {
+  align-self: center;
+  background: none;
+  border: none;
+  height: 2rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  width: fit-content;
+}

@@ -1,0 +1,9 @@
+<div>
+  <app-search></app-search>
+  <app-book-item
+    *ngFor="let book of books"
+    [book]="book"
+    (onDeleteBook)="deleteBook(book)"
+    (onUpdateBook)="updateBook($event.id, $event.book)"
+  ></app-book-item>
+</div>

@@ -1,0 +1,16 @@
+<div class="update_area">
+  <div class="btns">
+    <ng-container *ngIf="openBooks">
+      <button (click)="toggleOpenBooks()">Add Books</button>
+    </ng-container>
+    <ng-container *ngIf="!openBooks">
+      <button (click)="toggleOpenBooks()">Add Author</button>
+    </ng-container>
+  </div>
+  <ng-container *ngIf="openBooks">
+    <app-add-book (onAddBook)="addBook($event)"></app-add-book>
+  </ng-container>
+  <ng-container *ngIf="!openBooks">
+    <app-add-author (onAddAuthor)="addAuthor($event)"></app-add-author>
+  </ng-container>
+</div>

@@ -1,0 +1,118 @@
+<div
+  class="main_item"
+  [class.expanded]="isExpanded"
+  [class.expanded]="isExpandedEdit"
+>
+  <div class="first_part">
+    <p class="first_part_p">{{ book.title }}</p>
+    <p class="first_part_p">{{ book.author_name }}</p>
+    <p>Published date: {{ book.published_date }}</p>
+
+    <div class="buttons">
+      <button
+        [ngClass]="{ expanded: isExpanded }"
+        (click)="toggleExpansion()"
+        [class.edit_expanded]="isExpandedEdit"
+      >
+        description
+        <ng-container *ngIf="!isExpanded">
+          <fa-icon [icon]="faArrowDown"></fa-icon>
+        </ng-container>
+        <ng-container *ngIf="isExpanded">
+          <fa-icon [icon]="faArrowUp"></fa-icon>
+        </ng-container>
+      </button>
+      <fa-icon
+        [icon]="faEdit"
+        [ngClass]="{ expanded: isExpandedEdit }"
+        (click)="toggleExpansionEdit()"
+        [class.description_expanded]="isExpanded"
+      ></fa-icon>
+      <fa-icon
+        (click)="onDelete(book)"
+        [ngStyle]="{ color: 'red' }"
+        [icon]="faTimes"
+      ></fa-icon>
+    </div>
+  </div>
+  <div class="second_part">
+    <ng-container *ngIf="isExpanded">
+      <p class="description">{{ book.description }}</p>
+    </ng-container>
+    <ng-container *ngIf="isExpandedEdit">
+      <form class="form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="title">Title </label>
+          <input type="text" name="title" formControlName="title" id="title" />
+          <div
+            *ngIf="
+              bookForm.get('title')?.invalid && bookForm.get('title')?.touched
+            "
+          >
+            <div *ngIf="bookForm.get('title')?.hasError('required')">
+              Title is required
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="description">Description </label>
+          <input
+            type="text"
+            name="description"
+            formControlName="description"
+            id="description"
+          />
+          <div
+            *ngIf="
+              bookForm.get('description')?.invalid &&
+              bookForm.get('description')?.touched
+            "
+          >
+            <div *ngIf="bookForm.get('description')?.hasError('required')">
+              Description is required
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="author_name">Author Name </label>
+          <input
+            type="text"
+            name="author_name"
+            formControlName="author_name"
+            id="author_name"
+          />
+          <div
+            *ngIf="
+              bookForm.get('author_name')?.invalid &&
+              bookForm.get('author_name')?.touched
+            "
+          >
+            <div *ngIf="bookForm.get('author_name')?.hasError('required')">
+              Author Name is required
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="published_date">Published Date </label>
+          <input
+            type="date"
+            name="published_date"
+            formControlName="published_date"
+            id="published_date"
+          />
+          <div
+            *ngIf="
+              bookForm.get('published_date')?.invalid &&
+              bookForm.get('published_date')?.touched
+            "
+          >
+            <div *ngIf="bookForm.get('published_date')?.hasError('required')">
+              Published Date is required
+            </div>
+          </div>
+        </div>
+        <input type="submit" value="Save" />
+      </form>
+    </ng-container>
+  </div>
+</div>

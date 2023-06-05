@@ -1,0 +1,39 @@
+<form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name</label><br />
+    <input
+      type="text"
+      name="name"
+      formControlName="name"
+      id="name"
+      placeholder="Add name"
+    />
+    <div
+      *ngIf="authorForm.get('name')?.invalid && authorForm.get('name')?.touched"
+    >
+      <div *ngIf="authorForm.get('name')?.hasError('required')">
+        Name is required
+      </div>
+    </div>
+  </div>
+  <div>
+    <label for="email">Email</label><br />
+    <input
+      type="text"
+      name="email"
+      formControlName="email"
+      id="email"
+      placeholder="Add email"
+    />
+    <div
+      *ngIf="
+        authorForm.get('email')?.invalid && authorForm.get('email')?.touched
+      "
+    >
+      <div *ngIf="authorForm.get('email')?.hasError('required')">
+        Email is required
+      </div>
+    </div>
+  </div>
+  <input type="submit" value="Save" />
+</form>
