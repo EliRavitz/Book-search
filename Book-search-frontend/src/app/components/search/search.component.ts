@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import { startWith, map, tap, switchMap } from 'rxjs/operators';
 import { BookService } from '../../services/book.service';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -14,32 +12,39 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class SearchComponent implements OnInit {
   searchControl = new FormControl();
-  filteredBooks!: Observable<string[]>;
-  filteredAuthors!: Observable<string[]>;
+  filteredBooks: Observable<string[]> | undefined;
 
-  constructor(private bookService: BookService) {}
+  constructor(
+    private bookService: BookService,
+    private searchService: SearchService
+  ) {}
 
   ngOnInit() {
     this.filteredBooks = this.searchControl.valueChanges.pipe(
       startWith(''),
-      map((value) => this.filterBooks(value))
+      switchMap((value) => this._filterBooks(value))
     );
 
-    this.filteredAuthors = this.searchControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this.filterAuthors(value))
+    this.filteredBooks.subscribe((filteredBookNames) => {});
+  }
+
+  private _filterBooks(value: string): Observable<string[]> {
+    const filterValue = value.toLowerCase();
+
+    return this.bookService.getNames(value).pipe(
+      map((response: any) => {
+        if (response.books) {
+          const combinedArray = response.books;
+          this.searchService.updateSearchResults(combinedArray);
+          return combinedArray.filter(
+            (item: any) =>
+              (item.name?.toLowerCase() ?? '').includes(filterValue) ||
+              (item.title?.toLowerCase() ?? '').includes(filterValue)
+          );
+        } else {
+          return [];
+        }
+      })
     );
-  }
-
-  private filterBooks(value: string): string[] {
-    // Implement your logic to filter book names based on the value
-    // You can use the bookService to fetch book names and perform filtering
-    // Return an array of filtered book names
-  }
-
-  private filterAuthors(value: string): string[] {
-    // Implement your logic to filter author names based on the value
-    // You can use the authorService to fetch author names and perform filtering
-    // Return an array of filtered author names
   }
 }

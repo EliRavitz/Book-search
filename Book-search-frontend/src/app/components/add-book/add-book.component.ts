@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 import { Books } from '../../Books';
 
@@ -17,7 +18,7 @@ export class AddBookComponent {
 
   bookForm: FormGroup;
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     this.bookForm = new FormGroup({
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -28,7 +29,7 @@ export class AddBookComponent {
 
   onSubmit() {
     if (this.bookForm.invalid) {
-      alert('Please fill in all fields');
+      this.toastr.error('Please fill in all fields');
       return;
     }
 

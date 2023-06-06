@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Authors } from '../../Authors';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-author',
@@ -11,7 +12,7 @@ export class AddAuthorComponent {
   @Output() onAddAuthor: EventEmitter<Authors> = new EventEmitter();
 
   authorForm: FormGroup;
-  constructor() {
+  constructor(private toastr: ToastrService) {
     this.authorForm = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
@@ -20,7 +21,7 @@ export class AddAuthorComponent {
 
   onSubmit() {
     if (this.authorForm.invalid) {
-      alert('Please fill in all fields');
+      this.toastr.error('Please fill in all fields');
       return;
     }
 

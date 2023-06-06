@@ -3,7 +3,10 @@
   <app-book-item
     *ngFor="let book of books"
     [book]="book"
+    [authors]="authors"
     (onDeleteBook)="deleteBook(book)"
+    (onDeleteAuthor)="deleteAuthor($event)"
     (onUpdateBook)="updateBook($event.id, $event.book)"
+    (onUpdateAuthor)="updateAuthor($event.id, $event.author)"
   ></app-book-item>
 </div>

@@ -26,15 +26,53 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .first_part_p {
   width: 10rem;
+  margin: 0%;
+}
+
+.author_area {
+  display: flex;
+  border: 1px solid rgb(221, 221, 221);
+  padding: 0.5rem;
+}
+.author_area p,
+.author_area fa-icon {
+  margin: 0rem 0.3rem;
+}
+
+.author_area fa-icon {
+  cursor: pointer;
+}
+
+.published_date {
+  margin: 0%;
 }
 
 .buttons button,
 .buttons fa-icon {
   margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+.author_form {
+  position: absolute;
+  top: -1rem;
+  left: 44%;
+  background-color: #fff;
+  padding: 0.9rem;
+}
+.author_form form {
+  display: flex;
+}
+
+.author_form input {
+  margin-right: 0.8rem;
+}
+.author_form input[submit] {
   cursor: pointer;
 }
 
@@ -58,17 +96,16 @@
   display: flex;
   align-items: start;
   height: 4rem;
-}
-
-.form > div {
-  margin: 0 0.5rem;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .form input {
-  width: 10rem;
+  width: 13rem;
 }
 
-.form > input {
+.form > input,
+.author_form form > input {
   align-self: center;
   background: none;
   border: none;
@@ -76,4 +113,8 @@
   cursor: pointer;
   font-size: 1.2rem;
   width: fit-content;
+}
+.form > input:hover,
+.author_form form > input:hover {
+  color: #717171;
 }

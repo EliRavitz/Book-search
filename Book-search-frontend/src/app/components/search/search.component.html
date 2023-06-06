@@ -1,13 +1,15 @@
-<mat-form-field>
-  <input
-    type="text"
-    matInput
-    [formControl]="searchControl"
-    placeholder="Search for a book or author"
-  />
-  <mat-autocomplete>
-    <mat-option *ngFor="let book of filteredBooks | async" [value]="book">
-      {{ book }}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+<div class="main_search">
+  <mat-form-field class="search">
+    <input
+      type="text"
+      matInput
+      [formControl]="searchControl"
+      placeholder="Search for a book or author"
+    />
+    <mat-autocomplete>
+      <mat-option *ngFor="let book of filteredBooks | async" [value]="book">
+        {{ book }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

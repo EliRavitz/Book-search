@@ -1,21 +1,56 @@
 .update_area {
   margin: auto;
+  margin-top: 2rem;
   width: fit-content;
   border-radius: 5px;
   padding: 0 5rem 3rem 5rem;
   background-color: rgb(235, 232, 232);
-  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
   margin-bottom: 2rem;
+  animation: animate1 1s ease-in forwards;
+  box-shadow: 0px 0px 10px 1px #ff8800;
+}
+
+@keyframes animate1 {
+  to {
+    box-shadow: 0px 0px 10px 1px #3350ec;
+  }
+}
+
+.current_open_update_area {
+  animation: animate2 1s ease-in forwards;
+  box-shadow: 0px 0px 10px 1px #3350ec;
+}
+
+@keyframes animate2 {
+  to {
+    box-shadow: 0px 0px 10px 1px #ff8800;
+  }
 }
 
 .btns {
   text-align: center;
 }
 
-.btns button {
-  height: 3rem;
-  margin: 2rem;
+.btn1,
+.btn2 {
+  height: 2rem;
+  margin: 2rem 0.5rem;
   cursor: pointer;
-  background-color: rgb(235, 131, 61);
+  background: none;
   border: none;
+  border-bottom: 3px solid #b5b8c6;
+}
+
+.btn1:hover {
+  border-bottom: 3px solid #ff8800;
+}
+.btn2:hover {
+  border-bottom: 3px solid #3350ec;
+}
+
+.current_open_btn1 {
+  border-bottom: 3px solid #ff8800;
+}
+.current_open_btn2 {
+  border-bottom: 3px solid #3350ec;
 }

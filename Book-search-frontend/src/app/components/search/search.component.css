@@ -1,9 +1,10 @@
 .main_search {
   text-align: center;
-  margin: 2rem 0;
 }
-.main_search input {
-  font-size: 1.2rem;
-  height: 1.3rem;
-  width: 15rem;
+.search {
+  width: 20rem;
+}
+
+.search input {
+  text-align: center;
 }

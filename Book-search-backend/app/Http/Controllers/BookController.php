@@ -107,4 +107,25 @@ class BookController extends Controller
         return $books;
         return response()->json(['books' => $books]);
     }
+
+        /**
+    * search by names.
+    */
+
+    public function searcNames(Request $request)
+    {
+        $query = $request->query('name');
+        
+        $matchingAuthors = Book::where('author_name', 'LIKE', '%' . $query . '%')->get();
+        $matchingBooks = Book::where('title', 'LIKE', '%' . $query . '%')->get();
+
+        $combinedCollection = $matchingAuthors->concat($matchingBooks);
+        $uniqueBooks = $combinedCollection->unique('id');
+
+        $results = [
+            'books' => $uniqueBooks,
+        ];
+        
+        return response()->json($results);
+    }
 }

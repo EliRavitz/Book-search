@@ -5,8 +5,63 @@
 >
   <div class="first_part">
     <p class="first_part_p">{{ book.title }}</p>
-    <p class="first_part_p">{{ book.author_name }}</p>
-    <p>Published date: {{ book.published_date }}</p>
+    <div class="author_area">
+      <p>{{ book.author_name }}</p>
+      <fa-icon [icon]="faEdit" (click)="toggleExpansionEditAuthor()"></fa-icon>
+      <fa-icon
+        (click)="onDeleteAut(authorForBook)"
+        [ngStyle]="{ color: 'red' }"
+        [icon]="faTimes"
+      ></fa-icon>
+    </div>
+    <ng-container *ngIf="isExpandedEditAuthor">
+      <div class="author_form">
+        <form [formGroup]="authorForm" (ngSubmit)="onSubmitAuthor()">
+          <div>
+            <label for="name">Name</label><br />
+            <input
+              type="text"
+              name="name"
+              formControlName="name"
+              id="name"
+              placeholder="Add name"
+            />
+            <div
+              *ngIf="
+                authorForm.get('name')?.invalid &&
+                authorForm.get('name')?.touched
+              "
+            >
+              <div *ngIf="authorForm.get('name')?.hasError('required')">
+                Name is required
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="email">Email</label><br />
+            <input
+              type="text"
+              name="email"
+              formControlName="email"
+              id="email"
+              placeholder="Add email"
+            />
+            <div
+              *ngIf="
+                authorForm.get('email')?.invalid &&
+                authorForm.get('email')?.touched
+              "
+            >
+              <div *ngIf="authorForm.get('email')?.hasError('required')">
+                Email is required
+              </div>
+            </div>
+          </div>
+          <input type="submit" value="Save" />
+        </form>
+      </div>
+    </ng-container>
+    <p class="published_date">Published date: {{ book.published_date }}</p>
 
     <div class="buttons">
       <button
@@ -42,7 +97,7 @@
     <ng-container *ngIf="isExpandedEdit">
       <form class="form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
         <div>
-          <label for="title">Title </label>
+          <label for="title">Title </label><br />
           <input type="text" name="title" formControlName="title" id="title" />
           <div
             *ngIf="
@@ -55,7 +110,7 @@
           </div>
         </div>
         <div>
-          <label for="description">Description </label>
+          <label for="description">Description </label><br />
           <input
             type="text"
             name="description"
@@ -74,26 +129,7 @@
           </div>
         </div>
         <div>
-          <label for="author_name">Author Name </label>
-          <input
-            type="text"
-            name="author_name"
-            formControlName="author_name"
-            id="author_name"
-          />
-          <div
-            *ngIf="
-              bookForm.get('author_name')?.invalid &&
-              bookForm.get('author_name')?.touched
-            "
-          >
-            <div *ngIf="bookForm.get('author_name')?.hasError('required')">
-              Author Name is required
-            </div>
-          </div>
-        </div>
-        <div>
-          <label for="published_date">Published Date </label>
+          <label for="published_date">Published Date </label><br />
           <input
             type="date"
             name="published_date"

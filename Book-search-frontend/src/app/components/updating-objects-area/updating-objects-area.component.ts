@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { BookService } from '../../services/book.service';
+import { BookUpdateService } from '../../services/book-update.service';
+
 import { Books } from '../../Books';
 import { Authors } from '../../Authors';
 
@@ -12,7 +14,10 @@ export class UpdatingObjectsAreaComponent {
   books: Books[] = [];
   authors: Authors[] = [];
 
-  constructor(private bookService: BookService) {}
+  constructor(
+    private bookService: BookService,
+    private bookUpdateService: BookUpdateService
+  ) {}
 
   openBooks = false;
 
@@ -22,6 +27,7 @@ export class UpdatingObjectsAreaComponent {
 
   addBook(book: Books) {
     this.bookService.addBook(book).subscribe((book) => this.books.push(book));
+    this.bookUpdateService.triggerBookAdded();
   }
 
   addAuthor(author: Authors) {

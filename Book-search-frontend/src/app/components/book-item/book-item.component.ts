@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Books } from 'src/app/Books';
+import { Authors } from 'src/app/Authors';
 import {
   faTimes,
   faEdit,
@@ -15,16 +16,27 @@ import {
 })
 export class BookItemComponent {
   @Input() book!: Books;
+  @Input() authors: Authors[] = [];
   @Output() onDeleteBook: EventEmitter<Books> = new EventEmitter();
+  @Output() onDeleteAuthor: EventEmitter<Authors> = new EventEmitter();
   @Output() onUpdateBook: EventEmitter<{ id?: number; book: Partial<Books> }> =
     new EventEmitter();
+  @Output() onUpdateAuthor: EventEmitter<{
+    id?: number;
+    author: Partial<Authors>;
+  }> = new EventEmitter();
 
-  // title!: string;
-  // description!: string;
-  // author_name!: string;
-  // published_date!: Date;
+  getAuthorForBook(): Authors | undefined {
+    if (this.book && this.book.author_name) {
+      return this.authors.find(
+        (author) => author.name === this.book.author_name
+      );
+    }
+    return undefined;
+  }
 
   bookForm: FormGroup;
+  authorForm: FormGroup;
 
   constructor() {
     this.bookForm = new FormGroup({
@@ -33,10 +45,23 @@ export class BookItemComponent {
       author_name: new FormControl('', Validators.required),
       published_date: new FormControl('', Validators.required),
     });
+    this.authorForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+    });
   }
 
+  authorForBook: Authors | undefined;
   ngOnInit() {
     this.bookForm.patchValue(this.book);
+    this.authorForBook = this.getAuthorForBook();
+    const author = this.getAuthorForBook();
+    if (author) {
+      this.authorForm.patchValue({
+        name: author.name,
+        email: author.email,
+      });
+    }
   }
 
   onSubmit() {
@@ -44,9 +69,9 @@ export class BookItemComponent {
       alert('Please fill in all fields');
       return;
     }
-
     const updatedFields: Partial<Books> = {};
 
+    this.isExpandedEdit = false;
     if (this.bookForm.value.title !== this.book.title) {
       updatedFields.title = this.bookForm.value.title;
     }
@@ -78,6 +103,40 @@ export class BookItemComponent {
     }
   }
 
+  onSubmitAuthor() {
+    if (this.authorForm.invalid) {
+      alert('Please fill in all fields');
+      return;
+    }
+    const updatedFields: Partial<Authors> = {};
+
+    this.isExpandedEditAuthor = false;
+    if (
+      this.authorForBook &&
+      this.authorForm.value.name !== this.authorForBook.name
+    ) {
+      updatedFields.name = this.authorForm.value.name;
+    }
+
+    if (
+      this.authorForBook &&
+      this.authorForm.value.email !== this.authorForBook.email
+    ) {
+      updatedFields.email = this.authorForm.value.email;
+    }
+
+    if (Object.keys(updatedFields).length === 0) {
+      return;
+    }
+
+    if (this.authorForBook && this.authorForBook.id) {
+      this.onUpdateAuthor.emit({
+        id: this.authorForBook.id,
+        author: updatedFields,
+      });
+    }
+  }
+
   faTimes = faTimes;
   faEdit = faEdit;
   faArrowDown = faArrowDown;
@@ -85,6 +144,7 @@ export class BookItemComponent {
 
   isExpanded = false;
   isExpandedEdit = false;
+  isExpandedEditAuthor = false;
 
   toggleExpansion() {
     this.isExpanded = !this.isExpanded;
@@ -93,7 +153,17 @@ export class BookItemComponent {
     this.isExpandedEdit = !this.isExpandedEdit;
   }
 
+  toggleExpansionEditAuthor() {
+    this.isExpandedEditAuthor = !this.isExpandedEditAuthor;
+  }
+
   onDelete(book: Books) {
     this.onDeleteBook.emit(book);
+  }
+
+  onDeleteAut(author: Authors | undefined) {
+    if (author) {
+      this.onDeleteAuthor.emit(author);
+    }
   }
 }

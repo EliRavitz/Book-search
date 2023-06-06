@@ -19,11 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::resource('books', BookController::class);
 Route::resource('authors', AuthorController::class);
 
-Route::get('/search-author-by-book/{book_name}', [AuthorController::class, 'searchAuthorByBook']);
-Route::get('/search-book-by-author/{author_name}', [BookController::class, 'searchBookByAuthor']);
 
-
-
+Route::get('/search', [BookController::class, 'searcNames']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

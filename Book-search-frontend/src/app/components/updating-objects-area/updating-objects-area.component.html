@@ -1,11 +1,19 @@
-<div class="update_area">
+<div class="update_area" [class.current_open_update_area]="openBooks">
   <div class="btns">
-    <ng-container *ngIf="openBooks">
-      <button (click)="toggleOpenBooks()">Add Books</button>
-    </ng-container>
-    <ng-container *ngIf="!openBooks">
-      <button (click)="toggleOpenBooks()">Add Author</button>
-    </ng-container>
+    <button
+      class="btn1"
+      [class.current_open_btn1]="openBooks"
+      (click)="toggleOpenBooks()"
+    >
+      Add Books
+    </button>
+    <button
+      class="btn2"
+      [class.current_open_btn2]="!openBooks"
+      (click)="toggleOpenBooks()"
+    >
+      Add Author
+    </button>
   </div>
   <ng-container *ngIf="openBooks">
     <app-add-book (onAddBook)="addBook($event)"></app-add-book>
