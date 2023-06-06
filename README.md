@@ -78,15 +78,31 @@ Importing SQL Schema
 If you have downloaded the SQL schema files, you can import them into your MySQL database to create the necessary tables and schema. Follow these steps:
 
 1.Open MySQL Workbench or any other MySQL management tool.  
+  
+  
 2.Connect to your MySQL server.  
+  
+  
 3.Create a new database for your project if you haven't already done so. You can use the following command to create a new database in MySQL Workbench:    
 ```CREATE DATABASE your_database_name;```  
-4.Select the newly created database as the active database.  
+  
+4.Select the newly created database as the active database. 
+  
+  
 5.Locate the SQL schema file in the "SQL Schema" folder within the base folder of the project. It should have a .sql file extension.  
+  
+  
 6.Open the SQL schema file using a text editor and copy its contents.  
-7.In your MySQL management tool, open a new SQL editor window or query tab.  
+  
+  
+7.In your MySQL management tool, open a new SQL editor window or query tab.   
+  
+  
 8.Paste the contents of the SQL schema file into the SQL editor window.  
+  
+  
 9.Execute the SQL statements by clicking on the "Execute" or "Run" button in your MySQL management tool. This will create the necessary tables and schema in your database.  
+  
   
 Repeat the above steps for each SQL schema file you have downloaded.
 
