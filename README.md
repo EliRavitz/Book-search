@@ -142,10 +142,11 @@ Please note that this is a basic overview of the project features. Refer to the 
   
 ## Example  
   
-# Inserting a new author and a new book:  
+### Inserting a new author and a new book:  
 ![Application Screenshot](images/1.png)![Application Screenshot](images/4.png)
 
- 
+ ### Authors and books search and below that a display of all the books with editing and deletion options for both authors and books:
+ ![Application Screenshot](images/3.png)
 
 
  
