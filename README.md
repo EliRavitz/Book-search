@@ -112,24 +112,6 @@ Repeat the above steps for each SQL schema file you have downloaded.
 Once you have imported the SQL schema into your database, make sure to configure the database connection settings in your Laravel project's .env file to match your local MySQL database configuration.  
 
 
-  
-## Usage  
-  
-The application provides the following features:
-
-1.**Listing Objects:** The application displays a table that lists books and authors.
-
-2.**Creating Objects:** Users can use the provided form to create new books and authors.
-
-3.**Deleting Objects:** Each object in the table has a delete button that allows users to remove the object.
-
-4.**Updating Objects:** Users can edit the details of a book or author using the provided form.
-
-5.**Filtering by Book Name:** Users can search for authors of a specific book by filtering the list using the book name.
-
-6.**Filtering by Author Name:** Users can search for books written by a specific author by filtering the list using the author name.  
-  
-Please note that this is a basic overview of the project features. Refer to the source code and relevant documentation for detailed implementation and customization.
 
 ## Usage
 
