@@ -107,9 +107,6 @@ If you have downloaded the SQL schema files, you can import them into your MySQL
 Repeat the above steps for each SQL schema file you have downloaded.
 
 Once you have imported the SQL schema into your database, make sure to configure the database connection settings in your Laravel project's .env file to match your local MySQL database configuration.  
-  
-
-Please note that you may need to update the table and column names or modify the schema according to your specific project requirements.
 
 
   
