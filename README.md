@@ -138,10 +138,12 @@ Additional Features:
 - Autocomplete Search: The search functionality includes autocomplete suggestions based on the available book and author names. This provides a convenient way for users to find the desired objects.
 
 Please note that this is a basic overview of the project features. Refer to the source code and relevant documentation for detailed implementation and customization.
-
-
-
- 
+  
+  
+## Example  
+  
+# Inserting a new author and a new book:  
+![Application Screenshot](images/1.png) ![Application Screenshot](images/4.png)
 
  
 
