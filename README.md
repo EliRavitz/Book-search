@@ -8,10 +8,13 @@ Follow these steps to set up the project:
 
 1. Clone the repository to your local machine:  
 ```git clone <repository_url>```  
+  
+  
 2. Navigate to the project folder:  
 ```cd Book-search```  
-3. Backend Setup:
-   
+  
+  
+3. Backend Setup:  
 - Navigate to the backend folder:  
 ```cd Book-search-backend```  
   
@@ -24,8 +27,7 @@ Follow these steps to set up the project:
 - Run the database migrations to create the necessary tables:  
 ```php artisan migrate```  
   
-4. Frontend Setup:
-
+4. Frontend Setup:  
 - Navigate to the frontend folder:  
 ```cd Book-search-frontend```  
  
@@ -33,16 +35,14 @@ Follow these steps to set up the project:
 ```npm install```  
   
   
-5. Run the Application:
-
+5. Run the Application:  
 - Start the backend server:  
 ```php artisan serve```  
  
 - Start the frontend server:  
 ```ng serve```  
 
-6. Access the application in your browser at `http://localhost:4200`.
-
+6. Access the application in your browser at `http://localhost:4200`.  
 ## Database Schema
 
 The project uses MySQL as the database. Below are the table schemas for the `books` and `authors` tables:
