@@ -74,7 +74,9 @@ CREATE TABLE books (
 );
 ```  
   
-Importing SQL Schema
+  
+## Importing SQL Schema  
+
 If you have downloaded the SQL schema files, you can import them into your MySQL database to create the necessary tables and schema. Follow these steps:
 
 1.Open MySQL Workbench or any other MySQL management tool.  
