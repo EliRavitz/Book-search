@@ -59,18 +59,36 @@ CREATE TABLE books (
   author_id INT(10) UNSIGNED,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);  
+);```  
   
 ### Authors  
   
-CREATE TABLE authors (
+```CREATE TABLE authors (
   id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255),
   numOfBooks INT(10) UNSIGNED,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+);```  
+  
+## Usage  
+  
+The application provides the following features:
+
+1.**Listing Objects:** The application displays a table that lists books and authors.
+
+2.**Creating Objects:** Users can use the provided form to create new books and authors.
+
+3.**Deleting Objects:** Each object in the table has a delete button that allows users to remove the object.
+
+4.**Updating Objects:** Users can edit the details of a book or author using the provided form.
+
+5.**Filtering by Book Name:** Users can search for authors of a specific book by filtering the list using the book name.
+
+6.**Filtering by Author Name:** Users can search for books written by a specific author by filtering the list using the author name.  
+  
+Please note that this is a basic overview of the project features. Refer to the source code and relevant documentation for detailed implementation and customization.
 
 
  
