@@ -4,7 +4,7 @@ This is a CRUD application developed using Angular on the frontend and Laravel (
 
 ## Installation
 
-1.Clone the repository: 
+1.Clone the repository:  
 ```git clone https://github.com/your-username/Book-search.git```
 
 2.Backend Setup:
