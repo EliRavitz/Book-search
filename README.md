@@ -131,6 +131,33 @@ The application provides the following features:
   
 Please note that this is a basic overview of the project features. Refer to the source code and relevant documentation for detailed implementation and customization.
 
+## Usage
+
+The application provides the following features:
+
+1. Listing Objects: The application displays a table that lists books and authors. The lists are dynamically updated based on changes made to either the books or authors.
+
+2. Creating Objects: Users can use the provided form to create new books and authors. Simply fill in the required information and submit the form.
+
+3. Deleting Objects: Each object in the table has a delete button that allows users to remove the author or the book.
+
+4. Updating Objects: Users can edit the details of a book or author using the provided form. Simply select the object from the table and modify the desired fields.
+
+5. Filtering by Book Name: Users can search for authors of a specific book by filtering the list using the book name. Enter the book name in the search field, and the table will update to show only the authors associated with that book.
+
+6. Filtering by Author Name: Users can search for books written by a specific author by filtering the list using the author name. Enter the author name in the search field, and the table will update to show only the books written by that author.
+
+Additional Features:
+
+- Quantity Tracking: The application tracks the number of books written by each author. The quantity is automatically updated whenever a book is added, deleted, or modified.
+
+- Error Handling: The application handles errors that may occur during API requests or server interactions. Error messages are displayed to the user using Toastr notifications.
+
+- Autocomplete Search: The search functionality includes autocomplete suggestions based on the available book and author names. This provides a convenient way for users to find the desired objects.
+
+Please note that this is a basic overview of the project features. Refer to the source code and relevant documentation for detailed implementation and customization.
+
+
 
  
 
