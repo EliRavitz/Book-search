@@ -2,6 +2,17 @@
 
 This is a CRUD application developed using Angular as the client-side framework and Laravel as the backend RESTful API. It allows users to manage books and authors data.
 
+## Link to the deployed site
+The site is deployed as follows,  
+
+client side - netlify  
+
+server side - railway  
+
+database - db4free - important! The data base is in a free service, So requests are very slow. If you use the deployed site, be patient.  
+
+To get the fast version, download and install it on your computer as detailed below.  
+
 ## Installation
 
 Follow these steps to set up the project:
