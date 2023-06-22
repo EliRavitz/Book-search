@@ -9,7 +9,7 @@ client side - netlify
 
 server side - railway  
 
-database - db4free - **Note! The data base is in a free service, So requests are very slow. If you use the deployed site, be patient.**  
+database - ElephantSQL - **Note! The data base is in a free service, So requests are very slow. If you use the deployed site, be patient.**  
 
 To get the fast version, download and install it on your computer as detailed below.  
   
