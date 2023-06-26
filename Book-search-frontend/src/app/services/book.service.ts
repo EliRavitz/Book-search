@@ -5,6 +5,7 @@ import { Books } from '../Books';
 import { catchError, tap } from 'rxjs/operators';
 import { Authors } from '../Authors';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,9 +18,9 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class BookService {
-  private apiUrlBooks = '/api/books';
-  private apiUrlAuthors = '/api/authors';
-  private apiUrlSearch = '/api/search';
+  private apiUrlBooks = environment.serverUrl + '/books';
+  private apiUrlAuthors = environment.serverUrl + '/authors';
+  private apiUrlSearch = environment.serverUrl + '/search';
 
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 

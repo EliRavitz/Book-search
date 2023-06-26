@@ -1,7 +1,8 @@
 <?php
 
-use App\http\Controllers\BookController;
-use App\http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\AuthorController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,11 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::resource('books', BookController::class);
 Route::resource('authors', AuthorController::class);
 
-
 Route::get('/search', [BookController::class, 'searcNames']);
+
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
